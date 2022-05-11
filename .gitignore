@@ -1,2 +1,9 @@
 Weather.py
 yaUploader.py
+/GoogleDriveAPI/user_token.json
+/GoogleDriveAPI/credentials.json
+/GoogleDriveAPI/user_token.json
+OAuth2.0.py
+/tmp/*
+logger.py
+user_token.json
