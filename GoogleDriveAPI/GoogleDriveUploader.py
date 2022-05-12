@@ -5,6 +5,7 @@ from googleapiclient.http import MediaFileUpload
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from pprint import  pprint
+from progress.bar import ShadyBar
 import io
 import os
 import json
@@ -31,7 +32,7 @@ class GDriveUp:
                 token.write(creds.to_json())
         # log 'Received correct token'
         self.service = build('drive', 'v3', credentials=creds)
-        print('Received correct token')
+        # print('Received correct token')
 
     def create_dir(self, folder_name):
         results = self.service.files().list(q="mimeType='application/vnd.google-apps.folder' and trashed=False", pageSize=500, fields="nextPageToken, files(id, name)").execute()
@@ -43,12 +44,12 @@ class GDriveUp:
         for result in results['files']:
             if folder_name == result['name']:
                 # log "Dir already exist"
-                print("Dir already exist")
+                # print("Dir already exist")
                 return result['id']    
         file_metadata = {'name': folder_name, 'mimeType': 'application/vnd.google-apps.folder'}
         result = self.service.files().create(body=file_metadata, fields='id').execute()
         # log f"Dir ID {result.get('id')}"
-        print(f"Dir ID {result.get('id')}")
+        # print(f"Dir ID {result.get('id')}")
         return result.get('id')
 
     def upload_file(self, folder_id: str, url: str, name: str):
@@ -61,7 +62,7 @@ class GDriveUp:
         for result in results.get('files'):
             if name == result['name']:
                 # pprint(result)
-                print(f"{result['id']}")
+                # print(f"{result['id']}")
                 # fileid = "'{}'".format(result['id'])
                 self.service.files().delete(fileId=f"{result['id']}").execute()
                   # log файл существует в папке и удаление файла
@@ -72,19 +73,22 @@ class GDriveUp:
         media = MediaFileUpload(f"tmp/{name}", mimetype='image/jpeg', resumable=True)
         file = self.service.files().create(body=file_metadata, media_body=media, fields='id').execute()
         # lod файл записан
-        print (f"File ID: {file.get('id')}")
-        print(file)
+        # print (f"File ID: {file.get('id')}")
+        # print(file)
         os.remove(f"tmp/{name}")
          # log  файл удален с сервера
         return file.get('id')
 
-if __name__ == '__main__':
+def upload_to_googleDrive(folder_name: str, json_photos: list):
     GDriveUploader = GDriveUp()
-    folder_id = GDriveUploader.create_dir('New_new_folder')
-
-    url_file = 'https://sun6-20.userapi.com/s/v1/if1/NqpcH7sWt_0QGbLXO-NfxOohtrCWNn6uqDif3Aw_U7kDnFekyRYREJpSN6cXMrYrAaWOiCJB.jpg?size=968x1080&quality=96&type=album'
-    file_name = 'test.jpg'
-    file_id = GDriveUploader.upload_file(folder_id, url_file, file_name)
+    folder_id = GDriveUploader.create_dir(folder_name)
+    bar = ShadyBar('Loading to GDRiVE', max=len(json_photos))
+    for photos in json_photos:
+        bar.next()
+        file_id = GDriveUploader.upload_file(folder_id, photos['url'], photos['file_name'])
+        # print(file_id)
+    bar.finish()
+    
 
 
 

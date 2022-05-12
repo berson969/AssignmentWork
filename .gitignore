@@ -7,3 +7,5 @@ OAuth2.0.py
 /tmp/*
 logger.py
 user_token.json
+/GoogleDriveAPI/__pycache__/
+GoogleDriveAPI/__pycache__/GoogleDriveUploader.cpython-310.pyc

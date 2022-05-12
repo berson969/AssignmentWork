@@ -1,20 +1,33 @@
 import logging
+import traceback
+import sys
 
-logging.basicConfig(
-    level=logging.DEBUG,
-    filename = "app_log.log",
-    format = "%(asctime)s - %(module)s - %(levelname)s - %(funcName)s: %(lineno)d - %(message)s",
-    datefmt='%H:%M:%S',
-    )
-
-logging.info('Hello')
 
 log = logging.getLogger("main")
-
+log.setLevel(logging.INFO)
 FH = logging.FileHandler('app_log.log')
-basic_formater = logging.Formatter('%(asctime)s : [%(levelname)s] : %(message)s')
-FH.setFormatter(basic_formater)
-log.addHandler(FH)
+
+class My_logging:
+    def __init__(self) -> None:
+        pass
+
+def info_log(info: str):
+    basic_formater = logging.Formatter('%(asctime)s : [%(levelname)s] : %(message)s')
+    FH.setFormatter(basic_formater)
+    log.addHandler(FH)
+
+def error_log(line_no: str):
+    err_formater = logging.Formatter('%(asctime)s : [%(levelname)s][LINE ' + line_no + '] : %(message)s')
+    FH.setFormatter(err_formater)
+    log.addHandler(FH)
+    log.error(traceback.format_exc())
+    log.addHandler(FH)
 
 
-log.info('info message')
+info_log('info')
+
+
+frame = traceback.extract_tb(sys.exc_info()[2])
+line_no = str(frame[0]).split()[4]
+## вызываем функцию записи ошибки и передаем в нее номер строки с ошибкой
+error_log(line_no)
