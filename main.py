@@ -3,7 +3,7 @@ import requests
 import datetime
 from progress.bar import ChargingBar
 import os
-from  GoogleDriveAPI.GoogleDriveUploader import  GDriveUp, upload_to_googleDrive
+from  GoogleDriveUploader import  GDriveUp, upload_to_googleDrive
 # from my_logging import My_logging
 
 class YaUploader:

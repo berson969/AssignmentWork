@@ -1,3 +1,0 @@
-18:53:26 - my_logging - INFO - <module>: 10 - Hello
-2022-05-10 18:53:26,565 : [INFO] : info message
-18:53:26 - my_logging - INFO - <module>: 20 - info message

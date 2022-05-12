@@ -1,11 +1,5 @@
-Weather.py
-yaUploader.py
-/GoogleDriveAPI/user_token.json
-/GoogleDriveAPI/credentials.json
-/GoogleDriveAPI/user_token.json
-OAuth2.0.py
-/tmp/*
-logger.py
+credentials.json
 user_token.json
-/GoogleDriveAPI/__pycache__/*
-/GoogleDriveAPI/__pycache__/GoogleDriveUploader.cpython-310.pyc
+/tmp/
+/__pycache__/
+/venv/

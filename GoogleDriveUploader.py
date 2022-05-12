@@ -12,7 +12,7 @@ import json
 
 
 SCOPES = ['https://www.googleapis.com/auth/drive']
-APP_TOKEN_FILE = os.path.join(os.getcwd(), 'GoogleDriveAPI/credentials.json')
+APP_TOKEN_FILE = os.path.join(os.getcwd(), 'credentials.json')
 USER_TOKEN_FILE = "user_token.json"
 
 class GDriveUp:
@@ -62,8 +62,6 @@ class GDriveUp:
         for result in results.get('files'):
             if name == result['name']:
                 # pprint(result)
-                # print(f"{result['id']}")
-                # fileid = "'{}'".format(result['id'])
                 self.service.files().delete(fileId=f"{result['id']}").execute()
                   # log файл существует в папке и удаление файла
         file_metadata = {'name': name, 'parents': [folder_id]}
