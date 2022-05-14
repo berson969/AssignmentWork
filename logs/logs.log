@@ -1,0 +1,80 @@
+[2022-05-14 07:46:08,135: INFO] success
+[2022-05-14 07:46:10,495: INFO] success
+[2022-05-14 07:46:12,593: INFO] in-progress
+[2022-05-14 07:46:14,689: INFO] in-progress
+[2022-05-14 07:46:16,796: INFO] in-progress
+[2022-05-14 07:46:16,803: INFO] file_cache is only supported with oauth2client<4.0.0
+[2022-05-14 07:50:32,313: INFO] in-progress
+[2022-05-14 07:50:34,449: INFO] in-progress
+[2022-05-14 07:50:36,807: INFO] in-progress
+[2022-05-14 07:50:38,904: INFO] success
+[2022-05-14 07:50:41,005: INFO] in-progress
+[2022-05-14 07:50:41,197: INFO] file_cache is only supported with oauth2client<4.0.0
+[2022-05-14 08:06:28,049: __main__ INFO] in-progress
+[2022-05-14 08:06:29,633: __main__ INFO] in-progress
+[2022-05-14 08:06:31,372: __main__ INFO] in-progress
+[2022-05-14 08:06:33,037: __main__ INFO] success
+[2022-05-14 08:06:35,225: __main__ INFO] success
+[2022-05-14 08:06:35,228: GoogleDriveUploader INFO] Received correct token
+[2022-05-14 08:19:32,114: __main__ INFO] in-progress
+[2022-05-14 08:19:33,736: __main__ INFO] in-progress
+[2022-05-14 08:19:35,892: __main__ INFO] success
+[2022-05-14 08:19:37,888: __main__ INFO] in-progress
+[2022-05-14 08:19:39,703: __main__ INFO] success
+[2022-05-14 08:19:39,706: GoogleDriveUploader INFO] Received correct token
+[2022-05-14 08:19:40,164: GoogleDriveUploader INFO] Dir already exist
+[2022-05-14 08:19:40,753: GoogleDriveUploader INFO] File exist and will be deleted
+[2022-05-14 08:19:42,930: GoogleDriveUploader INFO] New file 1qrTnPg1WFpZGuzcvhQT8Mh75Jet6oJEz was recorded
+[2022-05-14 08:19:42,931: GoogleDriveUploader INFO] File deleted from /tmp
+[2022-05-14 08:19:43,442: GoogleDriveUploader INFO] File exist and will be deleted
+[2022-05-14 08:19:45,979: GoogleDriveUploader INFO] New file 1uoS7J6sgRxwbcnBPPKFDUrjwXeyMusea was recorded
+[2022-05-14 08:19:45,979: GoogleDriveUploader INFO] File deleted from /tmp
+[2022-05-14 08:19:46,428: GoogleDriveUploader INFO] File exist and will be deleted
+[2022-05-14 08:19:49,065: GoogleDriveUploader INFO] New file 17sIMqzihnWeZhHndOWj4gcFPTUEv3VR6 was recorded
+[2022-05-14 08:19:49,065: GoogleDriveUploader INFO] File deleted from /tmp
+[2022-05-14 08:19:49,586: GoogleDriveUploader INFO] File exist and will be deleted
+[2022-05-14 08:19:51,530: GoogleDriveUploader INFO] New file 1pfExUD_0eoBUUhuXNWDkKL07m8Op9rxo was recorded
+[2022-05-14 08:19:51,530: GoogleDriveUploader INFO] File deleted from /tmp
+[2022-05-14 08:19:52,254: GoogleDriveUploader INFO] File exist and will be deleted
+[2022-05-14 08:19:54,501: GoogleDriveUploader INFO] New file 1osZclCqo5sF0HcSHB8J80cPTmxAuZ49b was recorded
+[2022-05-14 08:19:54,502: GoogleDriveUploader INFO] File deleted from /tmp
+[2022-05-14 08:28:54,921: __main__ INFO] in-progress
+[2022-05-14 08:28:56,609: __main__ INFO] in-progress
+[2022-05-14 08:28:58,499: __main__ INFO] in-progress
+[2022-05-14 08:29:00,831: __main__ INFO] success
+[2022-05-14 08:29:02,708: __main__ INFO] in-progress
+[2022-05-14 08:29:02,710: GoogleDriveUploader INFO] Received correct token
+[2022-05-14 08:29:03,085: GoogleDriveUploader INFO] Dir already exist
+[2022-05-14 08:29:03,613: GoogleDriveUploader INFO] File exist and will be deleted
+[2022-05-14 08:29:05,324: GoogleDriveUploader INFO] New file 1HVxPc4PkxoKRttySUegL_wRsRLXAPFg7 was recorded
+[2022-05-14 08:29:05,325: GoogleDriveUploader INFO] File deleted from /tmp
+[2022-05-14 08:29:05,952: GoogleDriveUploader INFO] File exist and will be deleted
+[2022-05-14 08:29:08,970: GoogleDriveUploader INFO] New file 1VHHHdUjobwDPKtn0ooAu2a3u_21PNrl8 was recorded
+[2022-05-14 08:29:08,971: GoogleDriveUploader INFO] File deleted from /tmp
+[2022-05-14 08:29:09,481: GoogleDriveUploader INFO] File exist and will be deleted
+[2022-05-14 08:29:11,738: GoogleDriveUploader INFO] New file 1MdzUnCjJsUjlezX4ITPRrd_1uajmLvjB was recorded
+[2022-05-14 08:29:11,738: GoogleDriveUploader INFO] File deleted from /tmp
+[2022-05-14 08:29:12,304: GoogleDriveUploader INFO] File exist and will be deleted
+[2022-05-14 08:29:14,283: GoogleDriveUploader INFO] New file 1cvrEenN4putufxESkBZmKRMQr6BwGwkI was recorded
+[2022-05-14 08:29:14,284: GoogleDriveUploader INFO] File deleted from /tmp
+[2022-05-14 08:29:14,802: GoogleDriveUploader INFO] File exist and will be deleted
+[2022-05-14 08:29:17,137: GoogleDriveUploader INFO] New file 1x6Z2JrTrrPKg92Aeu4iocUz2THRL4Ex4 was recorded
+[2022-05-14 08:29:17,137: GoogleDriveUploader INFO] File deleted from /tmp
+[2022-05-14 08:31:08,111: __main__ INFO] success
+[2022-05-14 08:31:10,450: __main__ INFO] success
+[2022-05-14 08:31:12,300: __main__ INFO] success
+[2022-05-14 08:31:14,400: __main__ INFO] success
+[2022-05-14 08:33:47,102: __main__ INFO] in-progress
+[2022-05-14 08:33:49,543: __main__ INFO] success
+[2022-05-14 08:33:51,759: __main__ INFO] in-progress
+[2022-05-14 08:33:53,931: __main__ INFO] in-progress
+[2022-05-14 08:33:53,936: GoogleDriveUploader INFO] Received correct token
+[2022-05-14 08:33:54,788: GoogleDriveUploader INFO] Dir ID 1ngAgbCmJzIvw9DF1hgxaK_5nacgEKdgv was recorded
+[2022-05-14 08:33:57,090: GoogleDriveUploader INFO] New file 1N5TLC_2rZENsW8XeeHgCA-6Q0EaN_Ege was recorded
+[2022-05-14 08:33:57,091: GoogleDriveUploader INFO] File deleted from /tmp
+[2022-05-14 08:34:01,093: GoogleDriveUploader INFO] New file 15lO4D-hL1nXyZqkyXrDSPRycJuX9TyJr was recorded
+[2022-05-14 08:34:01,093: GoogleDriveUploader INFO] File deleted from /tmp
+[2022-05-14 08:34:03,971: GoogleDriveUploader INFO] New file 16VaxUnTHY2QbPgrOLNSbi409j3hwxCS0 was recorded
+[2022-05-14 08:34:03,972: GoogleDriveUploader INFO] File deleted from /tmp
+[2022-05-14 08:34:06,760: GoogleDriveUploader INFO] New file 1F1Fvc14Cx2rWdua3Y9OSOPdlYVcQUBlq was recorded
+[2022-05-14 08:34:06,760: GoogleDriveUploader INFO] File deleted from /tmp

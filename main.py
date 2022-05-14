@@ -4,7 +4,14 @@ import datetime
 from progress.bar import ChargingBar
 import os
 from  GoogleDriveUploader import  GDriveUp, upload_to_googleDrive
-# from my_logging import My_logging
+import logging
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+fileHandler = logging.FileHandler('logs/logs.log')
+fileHandler.setFormatter(logging.Formatter(fmt='[%(asctime)s: %(name)s %(levelname)s] %(message)s'))
+logger.addHandler(fileHandler)
+
 
 class YaUploader:
 
@@ -15,6 +22,7 @@ class YaUploader:
 
     def create_dir(self, path: str):
         params = {'path': path}
+        requests.delete(self.url, params=params, headers=self.headers)
         res = requests.put(self.url, params=params, headers=self.headers)
 
     def upload_file(self, url_file: str, path: str):
@@ -22,9 +30,9 @@ class YaUploader:
         res = requests.post(self.url + '/upload', params=params, headers=self.headers)
         if res.status_code != 202:
             print(res.status_code)
-        # else:
+        else:
             # print(requests.get(res.json()['href'], headers=self.headers).json()['status'])
-            # поставить логгер!!!
+            logger.info(requests.get(res.json()['href'], headers=self.headers).json()['status'])
 
 def upload_to_yadisk(token: str, folder_name: str, json_photos: list):
     yaUploader = YaUploader(token)
@@ -41,7 +49,7 @@ def vk_get_photos (token: str, owner_id: str, album_name: str, count):
     response = requests.get( 'https://api.vk.com/method/photos.get', params=params)
     # pprint(response.json())
     if response.json().get('error'):
-        # сюда поставить логгер!!!!!!!!!
+        logging.error(response.json()['error']['error_msg'])
         return response.json()['error']['error_msg']
     json_photos = []
     for picture in response.json()['response']['items']:
@@ -52,11 +60,9 @@ def vk_get_photos (token: str, owner_id: str, album_name: str, count):
                 file_name = file_name.rstrip('.jpg') + '_' + date_fromutc + '.jpg'         
         # print(file_name)
         max_size = 0
-        # max[x * y for x, y in picture['sizes']]
         for pic in picture['sizes']:
             if pic['height'] * pic['width'] > max_size:
                 max_size = pic['height'] * pic['width']
-        # print(datetime.utcfromtimestamp(picture['date']).date())
         json_photos.append({'file_name': file_name, 'size': pic['type'], 'url': pic['url'], 'date': date_fromutc})
         if len(json_photos) == count:
             return json_photos 

@@ -6,14 +6,22 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from pprint import  pprint
 from progress.bar import ShadyBar
-import io
 import os
-import json
+import logging
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+fileHandler = logging.FileHandler('logs/logs.log')
+fileHandler.setFormatter(logging.Formatter(fmt='[%(asctime)s: %(name)s %(levelname)s] %(message)s'))
+logger.addHandler(fileHandler)
+
 
 
 SCOPES = ['https://www.googleapis.com/auth/drive']
 APP_TOKEN_FILE = os.path.join(os.getcwd(), 'credentials.json')
 USER_TOKEN_FILE = "user_token.json"
+
+
 
 class GDriveUp:
     def __init__(self):
@@ -30,9 +38,8 @@ class GDriveUp:
                 creds = flow.run_local_server(port=0)
             with open(USER_TOKEN_FILE, 'w') as token:
                 token.write(creds.to_json())
-        # log 'Received correct token'
+        logger.info('Received correct token')
         self.service = build('drive', 'v3', credentials=creds)
-        # print('Received correct token')
 
     def create_dir(self, folder_name):
         results = self.service.files().list(q="mimeType='application/vnd.google-apps.folder' and trashed=False", pageSize=500, fields="nextPageToken, files(id, name)").execute()
@@ -43,13 +50,11 @@ class GDriveUp:
             results['files'] = results['files'] + nextPage['files']
         for result in results['files']:
             if folder_name == result['name']:
-                # log "Dir already exist"
-                # print("Dir already exist")
+                logger.info("Dir already exist")
                 return result['id']    
         file_metadata = {'name': folder_name, 'mimeType': 'application/vnd.google-apps.folder'}
         result = self.service.files().create(body=file_metadata, fields='id').execute()
-        # log f"Dir ID {result.get('id')}"
-        # print(f"Dir ID {result.get('id')}")
+        logger.info(f"Dir ID {result.get('id')} was recorded")
         return result.get('id')
 
     def upload_file(self, folder_id: str, url: str, name: str):
@@ -63,30 +68,34 @@ class GDriveUp:
             if name == result['name']:
                 # pprint(result)
                 self.service.files().delete(fileId=f"{result['id']}").execute()
-                  # log файл существует в папке и удаление файла
+                logger.info('File exist and will be deleted')
         file_metadata = {'name': name, 'parents': [folder_id]}
         body_b = requests.get(url)
         with open(f"tmp/{name}", 'wb') as body:
             body.write(body_b.content)
         media = MediaFileUpload(f"tmp/{name}", mimetype='image/jpeg', resumable=True)
         file = self.service.files().create(body=file_metadata, media_body=media, fields='id').execute()
-        # lod файл записан
-        # print (f"File ID: {file.get('id')}")
+        logger.info(f"New file {file.get('id')} was recorded")
         # print(file)
         os.remove(f"tmp/{name}")
-         # log  файл удален с сервера
+        logger.info('File deleted from /tmp')
         return file.get('id')
 
 def upload_to_googleDrive(folder_name: str, json_photos: list):
-    GDriveUploader = GDriveUp()
-    folder_id = GDriveUploader.create_dir(folder_name)
-    bar = ShadyBar('Loading to GDRiVE', max=len(json_photos))
-    for photos in json_photos:
-        bar.next()
-        file_id = GDriveUploader.upload_file(folder_id, photos['url'], photos['file_name'])
-        # print(file_id)
-    bar.finish()
+    if os.path.exists(APP_TOKEN_FILE):
+        GDriveUploader = GDriveUp()
+        folder_id = GDriveUploader.create_dir(folder_name)
+        bar = ShadyBar('Loading to GDRiVE', max=len(json_photos))
+        for photos in json_photos:
+            bar.next()
+            file_id = GDriveUploader.upload_file(folder_id, photos['url'], photos['file_name'])
+            # print(file_id)
+        bar.finish()
+    else:
+        print(f"No such file or directory:{APP_TOKEN_FILE}")
+        logger.error(f"No such file or directory:{APP_TOKEN_FILE}") 
     
+
 
 
 

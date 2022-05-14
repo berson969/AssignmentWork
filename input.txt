@@ -1,16 +1,23 @@
 owner_id
-552934290
+
 Name of album (profile, wall, saved(only owner prifile))
 profile
 count
-5
+10
 VK_TOKEN
 a67f00c673c3d4b12800dd0ba29579ec56d804f3c5f3bbcef5328d4b3981fa5987b951cf2c8d8b24b9abd
 YA_TOKEN
-AQAAAAAAspNaAADLW8ptMO51lU-Ko0Ze0qWmaB4
+
 Number of VK profile addentionals
-205806868
+
 1
 2
 552934290
-249815131
+
+
+Обязательная часть находится в одном файле, дополнения находятся в отдельных
+Исходные данные находятся в файле `input.txt` .
+В соответствующую строку надо ввести исходные данные
+В директории проекта надо создать папку /tmp
+Чтобы работало с google drive надо в корневой католог положить ключ OAuth 2.0  с названием `credentials.json`
+Файл логирования находится по адресу  logs/logs.log 
